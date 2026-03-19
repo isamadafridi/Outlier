@@ -1,0 +1,466 @@
+:root {
+  --bg-top: #08142f;
+  --bg-bottom: #160f35;
+  --card-bg: rgba(8, 17, 43, 0.76);
+  --card-border: rgba(255, 255, 255, 0.16);
+  --text-main: #f7f0ff;
+  --text-soft: #d6d3f8;
+  --gold: #ffd36a;
+  --gold-deep: #f5b942;
+  --pink: #ff7eb6;
+  --rose: #ff5c8d;
+  --gift-base: #8c52ff;
+  --gift-dark: #6f33ea;
+  --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top, rgba(81, 124, 255, 0.45), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(255, 126, 182, 0.18), transparent 24%),
+    radial-gradient(circle at 80% 10%, rgba(255, 211, 106, 0.14), transparent 20%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 211, 106, 0.8) 1px, transparent 1.8px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1px, transparent 1.8px);
+  background-size: 180px 180px, 240px 240px, 320px 320px;
+  background-position: 10% 20%, 80% 10%, 50% 90%;
+  opacity: 0.7;
+  animation: twinkle 8s linear infinite;
+}
+
+body::after {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 55%);
+}
+
+.scene {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 18px;
+}
+
+.card-shell {
+  width: min(100%, 1000px);
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 32px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 1.05;
+}
+
+.intro {
+  width: min(100%, 700px);
+  margin: 18px auto 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.open-link {
+  display: inline-flex;
+  margin-top: 28px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #1a1132;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff3c0, var(--gold), #ffdff0);
+  box-shadow: 0 14px 30px rgba(255, 211, 106, 0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.open-link:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 34px rgba(255, 211, 106, 0.4);
+}
+
+.gift-stage {
+  position: relative;
+  min-height: 620px;
+  margin-top: 42px;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at center bottom, rgba(255, 126, 182, 0.15), transparent 30%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sky-glow,
+.sparkles,
+.gift-box,
+.surprise {
+  position: absolute;
+}
+
+.sky-glow {
+  inset: auto 50% 40px;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 211, 106, 0.35), transparent 70%);
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.sparkles {
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.1s;
+}
+
+.sparkles::before,
+.sparkles::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+}
+
+.sparkles-left::before {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255, 211, 106, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255, 126, 182, 0.95) 0 2px, transparent 3px);
+  background-size: 160px 160px, 220px 220px, 180px 180px;
+  background-position: 0 70px, 90px 30px, 150px 180px;
+}
+
+.sparkles-right::after {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255, 211, 106, 0.95) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255, 126, 182, 0.95) 0 2px, transparent 3px);
+  background-size: 180px 180px, 260px 260px, 200px 200px;
+  background-position: calc(100% - 80px) 80px, calc(100% - 200px) 200px, calc(100% - 150px) 60px;
+}
+
+.gift-box {
+  left: 50%;
+  bottom: 72px;
+  width: 220px;
+  height: 220px;
+  transform: translateX(-50%);
+  transition: transform 1s ease, opacity 0.8s ease;
+}
+
+.gift-box-body,
+.gift-lid {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #a170ff, var(--gift-base), var(--gift-dark));
+  box-shadow: var(--shadow);
+}
+
+.gift-box-body {
+  bottom: 0;
+  width: 220px;
+  height: 150px;
+}
+
+.gift-lid {
+  top: 26px;
+  width: 250px;
+  height: 58px;
+  transform-origin: left center;
+  transition: transform 1s cubic-bezier(0.2, 0.9, 0.2, 1), top 1s ease;
+}
+
+.gift-ribbon {
+  position: absolute;
+  background: linear-gradient(180deg, #ffe49b, var(--gold-deep));
+  z-index: 2;
+  border-radius: 999px;
+}
+
+.gift-ribbon-vertical {
+  left: 50%;
+  top: 22px;
+  width: 26px;
+  height: 170px;
+  transform: translateX(-50%);
+}
+
+.gift-ribbon-horizontal {
+  left: 50%;
+  top: 52px;
+  width: 250px;
+  height: 24px;
+  transform: translateX(-50%);
+}
+
+.gift-bow {
+  position: absolute;
+  top: -4px;
+  width: 72px;
+  height: 72px;
+  border: 14px solid var(--pink);
+  border-radius: 50% 50% 0 50%;
+  z-index: 3;
+  transition: transform 1s ease;
+}
+
+.bow-left {
+  left: 42px;
+  transform: rotate(-30deg);
+}
+
+.bow-right {
+  right: 42px;
+  transform: scaleX(-1) rotate(-30deg);
+}
+
+.surprise {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+  opacity: 0;
+  transform: translateY(22px) scale(0.95);
+  transition: opacity 0.8s ease 0.35s, transform 0.8s ease 0.35s;
+}
+
+.moon {
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  width: 128px;
+  height: 128px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff2bd, var(--gold) 60%, #f6b63a 100%);
+  box-shadow: 0 0 42px rgba(255, 211, 106, 0.55);
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  inset: 18px 10px 18px 42px;
+  border-radius: 50%;
+  background: rgba(8, 20, 47, 0.78);
+}
+
+.lantern {
+  position: absolute;
+  top: 120px;
+  width: 48px;
+  height: 88px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffeec2, #ffc857 45%, #ff9a5a);
+  box-shadow: 0 0 26px rgba(255, 200, 87, 0.35);
+  animation: float 3.2s ease-in-out infinite;
+}
+
+.lantern::before,
+.lantern::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.lantern::before {
+  top: -36px;
+  width: 2px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.lantern::after {
+  bottom: -10px;
+  width: 18px;
+  height: 18px;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  background: #ffb347;
+}
+
+.lantern-left {
+  left: 18%;
+}
+
+.lantern-right {
+  right: 18%;
+  animation-delay: -1.5s;
+}
+
+.message-card {
+  position: relative;
+  width: min(100%, 540px);
+  margin-top: 140px;
+  padding: 34px 28px;
+  border-radius: 28px;
+  background: rgba(10, 18, 44, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: var(--shadow);
+}
+
+.message-badge {
+  display: inline-flex;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 211, 106, 0.16);
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 16px 0 10px;
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.message-card p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.8;
+}
+
+.script-text,
+.signature {
+  font-family: "Great Vibes", cursive;
+}
+
+.script-text {
+  margin-bottom: 14px !important;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #fff1d2 !important;
+  line-height: 1.2 !important;
+}
+
+.signature {
+  margin-top: 16px !important;
+  font-size: 2rem;
+  color: #ffd2e6 !important;
+}
+
+#open-gift:target .gift-lid {
+  top: -24px;
+  transform: translateX(-50%) rotate(-28deg) translate(-46px, -34px);
+}
+
+#open-gift:target .bow-left {
+  transform: translate(-10px, -28px) rotate(-45deg);
+}
+
+#open-gift:target .bow-right {
+  transform: translate(10px, -28px) scaleX(-1) rotate(-45deg);
+}
+
+#open-gift:target .gift-box {
+  transform: translateX(-50%) translateY(86px) scale(0.72);
+  opacity: 0.18;
+}
+
+#open-gift:target .surprise,
+#open-gift:target .sparkles,
+#open-gift:target .sky-glow {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(16px);
+  }
+}
+
+@media (max-width: 720px) {
+  .card-shell {
+    padding: 22px 16px 28px;
+  }
+
+  .gift-stage {
+    min-height: 700px;
+  }
+
+  .gift-box {
+    bottom: 48px;
+    transform: translateX(-50%) scale(0.88);
+  }
+
+  #open-gift:target .gift-box {
+    transform: translateX(-50%) translateY(90px) scale(0.6);
+  }
+
+  .moon {
+    width: 104px;
+    height: 104px;
+    top: 72px;
+  }
+
+  .lantern-left {
+    left: 8%;
+  }
+
+  .lantern-right {
+    right: 8%;
+  }
+
+  .message-card {
+    margin-top: 170px;
+    padding: 28px 20px;
+  }
+}
